@@ -5,7 +5,7 @@ spring:
 ---
 server:
   port: 8001
-    
+
 spring:
   profiles: dev
   application:
@@ -21,14 +21,20 @@ spring:
       initial-size: 5                                       # 初始化连接数
       max-total: 5                                          # 最大连接数
 
-eureka: 
+mybatis:
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+eureka:
   client:
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka/
   instance:
     instance-id: microservicecloud-dept8001
     prefer-ip-address: true 
-    
+
 info:
   app.name: atguigu-microservicecloud
   company.name: www.atguigu.com
@@ -37,7 +43,6 @@ info:
 ---
 server:
   port: 8001
-
     
 spring:
   profiles: test
@@ -54,14 +59,21 @@ spring:
       initial-size: 5                                       # 初始化连接数
       max-total: 5                                          # 最大连接数
       max-wait-millis: 200                                  # 等待连接获取的最大超时时间
-eureka: 
+
+mybatis:
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+eureka:
   client:
-    service-url: 
+    service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
   instance:
     instance-id: microservicecloud-dept8001
     prefer-ip-address: true 
-    
+
 info:
   app.name: atguigu-microservicecloud
   company.name: www.atguigu.com
